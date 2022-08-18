@@ -12,6 +12,7 @@ class Admin extends React.Component
   {
     console.log('Render called')
     return <>
+        <Link to = "/home_page" className='LinktoHome'>&#x2190;</Link>
         <div>
           <h1>Admin Page</h1>
         </div>
@@ -31,7 +32,7 @@ class Admin extends React.Component
                 <img className='Image_Link' src={header} alt="Header" />
               </div>
             </Link>
-            <Link to='/register' className='link'>
+            <Link to='/home_page/admin/mail_management' className='link'>
               <div className='Div_Link'>
                 <div>Mail to Management</div>
                 <img className='Image_Link' src={header} alt="Header" />

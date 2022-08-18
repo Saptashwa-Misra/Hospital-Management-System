@@ -106,10 +106,10 @@ class DisplayAdmin extends React.Component
         <div class='Body'>
             <h1>Display Admin!!</h1>
             <div className='Search_bar'>
-                <Link to = "" className='LinktoHome'>&#x2190;</Link>
+                <Link to = "/home_page/admin" className='LinktoHome'>&#x2190;</Link>
                 <input type="text" className="Search" id="Search" placeholder="Search by name, mail id or phone number......." onChange={this.search_admin}/>
             </div>
-            <div>{this.Display_Records()}</div>
+            <div className='DisplayRecords'>{this.Display_Records()}</div>
             
         </div>
     </>
