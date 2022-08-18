@@ -4,7 +4,7 @@ import header from './images/Header.jpeg';
 import {
     Link
   } from "react-router-dom";
-import {getUsers} from '../apicalls'
+import {Login_User} from '../apicalls'
 
 class Login extends React.Component
 {
@@ -31,7 +31,25 @@ class Login extends React.Component
   submitButton = () => {
     //document.getElementById("submitted_or_not").innerText="SUBMITTED SUCCESSFULLY!!"
     console.log(this.state.email_username+"\t"+this.state.password)
-    window.open('/home_page');
+    if(this.state.email_username==="")
+      alert("Please enter your registered email id or username")
+    else if (this.state.password==="")
+      alert("Please enter your password")
+    else{
+          Login_User(this.state.email_username, this.state.password).then((res)=>{
+            console.log("Received response from DB: " + res)
+            if(res==='Login Success')
+                {
+                    window.open('/home_page');
+                    console.log('Login Successful')
+                }
+            else
+                {
+                    console.log("Login Unsuccessful")   
+                    alert(res)
+                }
+        })
+    }
   }
 
   render()

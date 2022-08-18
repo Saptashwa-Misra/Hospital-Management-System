@@ -79,3 +79,23 @@ td{
   margin-top: auto;
   margin-bottom: 2%;
 }
+
+.Image_Link{
+  height: 100px;
+}
+
+.Div_Link{
+  border: 2px solid black;
+  font-size: 25px;
+}
+
+.Div_Link:hover{
+  box-shadow: 7px 7px 14px 7px darkblue;
+  cursor: pointer;
+}
+
+.Home_Page{
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-around;
+}

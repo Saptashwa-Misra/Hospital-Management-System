@@ -8,6 +8,8 @@ import {
 import { Login } from './Components/login';
 import {Register} from './Components/registration'
 import { HomePage } from './Components/home_page';
+import { Admin } from './Components/admin';
+import { DisplayAdmin } from './Components/display_admin';
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
             <Route path="/" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/home_page" element={<HomePage/>} />
+            <Route path="/home_page/admin" element={<Admin/>} />
+            <Route path="/home_page/admin/display_admin" element={<DisplayAdmin/>} />
             <Route path="*" element={<h1>No Page Found</h1>} />
           </Routes>
         </BrowserRouter>

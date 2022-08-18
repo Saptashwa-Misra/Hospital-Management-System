@@ -70,7 +70,10 @@ class Register extends React.Component
             if(res==='Account exits')
                 alert("Account already exists with this mail is")
             else
-                console.log("Registered Successfully!!")
+                {
+                    console.log("Registered Successfully!!")
+                    
+                }
         })
         
     }

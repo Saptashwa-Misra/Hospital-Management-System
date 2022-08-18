@@ -13,7 +13,7 @@ class HomePage extends React.Component
     console.log('Render called')
     return <>
         <div>
-          <h1>Welcome to our Hospital</h1>
+          <h1>Admin Page</h1>
         </div>
         <div>
             <img src={header} alt="Header" />
@@ -21,19 +21,19 @@ class HomePage extends React.Component
         <div className='Home_Page'>
             <Link to='/register' className='link'>
               <div className='Div_Link'>
-                <div>Doctors</div>
+                <div>Display all Admins</div>
                 <img className='Image_Link' src={header} alt="Header" />
               </div>
             </Link>
             <Link to='/register' className='link'>
               <div className='Div_Link'>
-                <div>Patients</div>
+                <div>Request Approval</div>
                 <img className='Image_Link' src={header} alt="Header" />
               </div>
             </Link>
-            <Link to='/home_page/admin' className='link'>
+            <Link to='/register' className='link'>
               <div className='Div_Link'>
-                <div>Admin</div>
+                <div>Mail to Management</div>
                 <img className='Image_Link' src={header} alt="Header" />
               </div>
             </Link>
