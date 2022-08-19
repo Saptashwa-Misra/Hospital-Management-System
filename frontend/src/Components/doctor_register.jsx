@@ -124,7 +124,7 @@ class DoctorRegister extends React.Component
               </div>
                 <button type='submit' className='Submit_button' onClick={this.submitButton}>REGISTER</button>
         <div className='nav'>
-          <Link to='/' className='link'>Already registered? Please search</Link>
+          <Link to='/home_page/doctor/search_doctor' className='link'>Already registered? Please search</Link>
         </div>
             </div>
         </div>

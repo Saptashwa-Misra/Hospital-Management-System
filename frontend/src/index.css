@@ -140,3 +140,9 @@ h1{
   height: 350px;
   width: 250px;
 }
+
+.RadioButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

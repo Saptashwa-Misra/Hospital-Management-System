@@ -12,24 +12,18 @@ class PatientRegister extends React.Component
   {
     super(props)
     this.state={
-        url: '',
         name: '',
         phone_number: '',
         email_username: '',
         dob: '',
         department: '',
-        registration_number: ''
+        gender: ''
     }
   }
 
   changeName = (event) =>{
     console.log(event.target.value)
     this.setState({name: event.target.value})
-  }
-
-  changeURL = (event) =>{
-    console.log(event.target.value)
-    this.setState({url: event.target.value})
   }
 
   changePhoneNumber = (event) =>{
@@ -52,9 +46,9 @@ class PatientRegister extends React.Component
     this.setState({dob: event.target.value})
   }
 
-  changeRegistrationNumber = (event) =>{
+  changeGender = (event) =>{
     console.log(event.target.value)
-    this.setState({registration_number: event.target.value})
+    this.setState({gender: event.target.value})
   }
 
   submitButton = () => {
@@ -89,16 +83,13 @@ class PatientRegister extends React.Component
             <div className='Login_Inputs'>
               <div className='grid-container'>
 
-                    <label>Doctor's Image URL: </label>
-                    <input type="text" className="inputs" placeholder="Enter doctor's picture URL (should be public)" onChange={this.changeURL}/>
-
-                    <label>Doctor's Name: </label>
+                    <label>Patient's Name: </label>
                     <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} />
                 
-                    <label>Doctor's Phone number: </label>
+                    <label>Patient's Phone number: </label>
                     <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
                 
-                    <label>Doctor's Email: </label>
+                    <label>Patients's Email: </label>
                     <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
 
                     <label>Date of Birth: </label>
@@ -117,10 +108,11 @@ class PatientRegister extends React.Component
                         <option value = "Pediatricians">Pediatricians</option>
                         <option value = "Emergency">Emergency</option>
                     </select>
-
-                    <label>Doctor's Registration number: </label>
-                    <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} />
-                
+                    <label>Patient's Gender: </label>
+                    <div className='RadioButtons'>
+                        <div><input type="radio" name="gender" value="Male" onChange={this.changeGender}/>Male</div>
+                        <div><input type="radio" name="gender" value="Female" onChange={this.changeGender}/>Female</div>
+                    </div>
               </div>
                 <button type='submit' className='Submit_button' onClick={this.submitButton}>REGISTER</button>
         <div className='nav'>
