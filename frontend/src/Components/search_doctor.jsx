@@ -1,6 +1,5 @@
 import React from 'react';
 import '../index.css';
-import header from './images/displayAdmin.jpg';
 import {
     Link
   } from "react-router-dom";
@@ -35,29 +34,34 @@ class SearchDoctor extends React.Component
                     if(this.state.response[i].name!==res[i].name)
                         this.setState({response:res, search:res})
             }
-        //return admin_users
     })
     console.log(this.state.response)
-    let admin_users = this.state.search.map (admin => {
-        console.log(admin.name)
+    let doctor_users = this.state.search.map (doctor => {
+        console.log(doctor.name)
         return <>
             <div className='Admin_Div'>
-                <div>Name: {admin.name}</div>
-                <div>Email: {admin.email}</div>
-                <div>Phone: {admin.mobile}</div>
+                <div><img className='DoctorProfilePhoto' src={doctor.url} alt="DoctorPhoto" /></div>
+                <div>Name: Dr. {doctor.name.toUpperCase()}</div>
+                <div>Email: {doctor.email}</div>
+                <div>Phone: {doctor.mobile}</div>
+                <div>D.O.B.: {doctor.dob}</div>
+                <div>Department: {doctor.department}</div>
+                <div>Registration NO: {doctor.registration_no}</div>
             </div>
         </>
     })
-    console.log(admin_users)
-    return admin_users
+    if(this.state.search.length===0)
+        return <h2>Sorry!! No relevant doctors found!!</h2>
+    console.log(doctor_users)
+    return doctor_users
   }
 
-  search_admin = (event) => {
+  search_doctor = (event) => {
     try{
         console.log(event.target.value)
-        let searched_admin = this.state.response.filter(admin => (admin.name.toUpperCase().indexOf(event.target.value.toUpperCase())>=0 || admin.email.toUpperCase().indexOf(event.target.value.toUpperCase())>=0 || admin.mobile.indexOf(event.target.value)>=0))
-        console.log(searched_admin)
-        this.setState({search: searched_admin})
+        let searched_doctor = this.state.response.filter(doctor => (doctor.name.toUpperCase().indexOf(event.target.value.toUpperCase())>=0 || doctor.email.toUpperCase().indexOf(event.target.value.toUpperCase())>=0 || doctor.mobile.indexOf(event.target.value)>=0 || doctor.department.toUpperCase().indexOf(event.target.value.toUpperCase())>=0))
+        console.log(searched_doctor)
+        this.setState({search: searched_doctor})
     }
     catch (Exception)
     {
@@ -73,7 +77,7 @@ class SearchDoctor extends React.Component
             <h1>Search Doctors!!</h1>
             <div className='Search_bar'>
                 <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
-                <input type="text" className="Search" id="Search" placeholder="Search by name, mail id or phone number......." onChange={this.search_admin}/>
+                <input type="text" className="Search" id="Search" placeholder="Search by name, mail id, department or phone number......." onChange={this.search_doctor}/>
             </div>
             <div className='DisplayRecords'>{this.Display_Records()}</div>
             

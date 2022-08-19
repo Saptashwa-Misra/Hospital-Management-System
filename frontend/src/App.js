@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Login } from './Components/login';
-import {Register} from './Components/registration'
+import { Register } from './Components/registration'
 import { HomePage } from './Components/home_page';
 import { Admin } from './Components/admin';
 import { DisplayAdmin } from './Components/display_admin';
@@ -14,6 +14,8 @@ import { AdminMail } from './Components/admin_mail';
 import { Doctor } from './Components/doctor';
 import { DoctorRegister } from './Components/doctor_register';
 import { SearchDoctor } from './Components/search_doctor';
+import { Patients } from './Components/patients';
+import { PatientRegister } from './Components/patient_register';
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
             <Route path="/home_page/doctor" element={<Doctor/>} />
             <Route path="/home_page/doctor/register" element={<DoctorRegister/>} />
             <Route path="/home_page/doctor/search_doctor" element={<SearchDoctor/>} />
+            <Route path="/home_page/patients" element={<Patients/>} />
+            <Route path="/home_page/patients/register" element={<PatientRegister/>} />
             <Route path="*" element={<h1>No Page Found</h1>} />
           </Routes>
         </BrowserRouter>

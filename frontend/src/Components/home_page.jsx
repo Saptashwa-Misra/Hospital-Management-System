@@ -28,7 +28,7 @@ class HomePage extends React.Component
                 <img className='Image_Link' src={doctors} alt="Header" />
               </div>
             </Link>
-            <Link to='/register' className='link'>
+            <Link to='/home_page/patients' className='link'>
               <div className='Div_Link'>
                 <div>Patients</div>
                 <img className='Image_Link' src={patients} alt="Header" />
