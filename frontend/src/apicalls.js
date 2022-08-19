@@ -36,3 +36,25 @@ export const Login_User = async (email, password) => {
     console.log(res.data.message)
     return res.data.message
 }
+
+export const getDoctors = async () => {
+    const res = await axios.get(`${url}users/doctor/display`)
+    console.log(res.data)
+    return res.data
+}
+
+export const Register_Doctors = async (picture_url, name, email, mobile, dob, department, registration_no) => {
+    let req_json = {
+        "url":picture_url,
+        "name": name,
+        "email": email,
+        "mobile": mobile,
+        "dob":dob,
+        "department":department,
+        "registration_no":registration_no
+    }
+    console.log(`${url}users/doctor/register`)
+    const res =  await axios.post(`${url}users/doctor/register`,req_json)
+    console.log(res.data.message)
+    return res.data.message
+}

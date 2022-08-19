@@ -60,15 +60,6 @@ h1{
   justify-content: center;
 }
 
-table{
-  background-color: aqua;
-  justify-content: left;
-}
-
-td{
-  column-width: 550px;
-}
-
 .grid-container{
   display: grid;
   grid-template-columns: 250px 550px;
@@ -81,12 +72,14 @@ td{
 }
 
 .Image_Link{
-  height: 100px;
+  height: 150px;
+  width: 350px;
 }
 
 .Div_Link{
   border: 2px solid black;
   font-size: 25px;
+  margin-bottom: 5%;
 }
 
 .Div_Link:hover{
@@ -98,6 +91,7 @@ td{
   margin-top: 2%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .DisplayRecords{
@@ -130,4 +124,14 @@ td{
   width:5%;
   text-decoration: none;
   font-size: 50px;
+}
+
+.AdminPage_Header{
+  height: 250px;
+  width: 400px;
+}
+
+#doctorDepartment_Select{
+  height: 50px;
+  font-size: 17px;
 }

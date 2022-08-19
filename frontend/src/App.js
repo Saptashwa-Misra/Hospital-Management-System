@@ -11,6 +11,9 @@ import { HomePage } from './Components/home_page';
 import { Admin } from './Components/admin';
 import { DisplayAdmin } from './Components/display_admin';
 import { AdminMail } from './Components/admin_mail';
+import { Doctor } from './Components/doctor';
+import { DoctorRegister } from './Components/doctor_register';
+import { SearchDoctor } from './Components/search_doctor';
 
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
             <Route path="/home_page/admin" element={<Admin/>} />
             <Route path="/home_page/admin/display_admin" element={<DisplayAdmin/>} />
             <Route path="/home_page/admin/mail_management" element={<AdminMail/>} />
+            <Route path="/home_page/doctor" element={<Doctor/>} />
+            <Route path="/home_page/doctor/register" element={<DoctorRegister/>} />
+            <Route path="/home_page/doctor/search_doctor" element={<SearchDoctor/>} />
             <Route path="*" element={<h1>No Page Found</h1>} />
           </Routes>
         </BrowserRouter>

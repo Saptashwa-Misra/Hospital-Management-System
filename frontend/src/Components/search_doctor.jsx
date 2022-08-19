@@ -4,9 +4,9 @@ import header from './images/displayAdmin.jpg';
 import {
     Link
   } from "react-router-dom";
-import {getUsers} from '../apicalls'
+import {getDoctors} from '../apicalls'
 
-class DisplayAdmin extends React.Component
+class SearchDoctor extends React.Component
 {
 
     constructor(props) 
@@ -20,19 +20,7 @@ class DisplayAdmin extends React.Component
 
   
   Display_Records = (event) =>{
-    //let admin_users = <h1>Hello World</h1>
-    //if(this.state.response==='')
-    getUsers().then((res)=>{
-        // admin_users = res.map (admin => {
-        //     console.log(admin.name)
-        //     return <>
-        //         <div className='Admin_Div'>
-        //             <div>Name: </div>
-        //             <div>{admin.name}</div>
-        //         </div>
-        //     </>
-        // })
-        // console.log(admin_users)
+    getDoctors().then((res)=>{
         console.log("Res.length: "+res.length)
         console.log(this.state.response.length)
         console.log(res.length!==this.state.response.length)
@@ -67,25 +55,6 @@ class DisplayAdmin extends React.Component
   search_admin = (event) => {
     try{
         console.log(event.target.value)
-        //if(event.target.value==null)
-            
-        //if(event.target.value.leng)
-        // let admin_users = this.state.response.map (admin => {
-        //     console.log(admin.name)
-        //     if(admin.name.toUpperCase().indexOf(event.target.value.toUpperCase())>=0 || admin.email.toUpperCase().indexOf(event.target.value.toUpperCase())>=0)
-        //         return <>
-        //             <div className='Admin_Div'>
-        //                 <div>Name: {admin.name}</div>
-        //                 <div>Email: {admin.email}</div>
-        //                 <div>Phone: {admin.mobile}</div>
-        //             </div>
-        //         </>
-        //     else
-        //         return <></>
-        // })
-        // // console.log(admin_users)
-        // this.setState({search:1})
-        // return admin_users
         let searched_admin = this.state.response.filter(admin => (admin.name.toUpperCase().indexOf(event.target.value.toUpperCase())>=0 || admin.email.toUpperCase().indexOf(event.target.value.toUpperCase())>=0 || admin.mobile.indexOf(event.target.value)>=0))
         console.log(searched_admin)
         this.setState({search: searched_admin})
@@ -100,13 +69,10 @@ class DisplayAdmin extends React.Component
   {
     console.log('Render called')
     return <>
-        <div>
-            <img src={header} alt="Header" />
-        </div>
         <div class='Body'>
-            <h1>Display Admin!!</h1>
+            <h1>Search Doctors!!</h1>
             <div className='Search_bar'>
-                <Link to = "/home_page/admin" className='LinktoHome'>&#x2190;</Link>
+                <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
                 <input type="text" className="Search" id="Search" placeholder="Search by name, mail id or phone number......." onChange={this.search_admin}/>
             </div>
             <div className='DisplayRecords'>{this.Display_Records()}</div>
@@ -115,4 +81,4 @@ class DisplayAdmin extends React.Component
     </>
   }
 }
-export {DisplayAdmin}
+export {SearchDoctor}
