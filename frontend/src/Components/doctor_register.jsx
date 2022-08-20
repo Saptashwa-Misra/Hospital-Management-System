@@ -103,7 +103,7 @@ class DoctorRegister extends React.Component
                     <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
 
                     <label>Date of Birth: </label>
-                    <input type="date" className="inputs" placeholder="Enter email id" onChange={this.changeDOB} />
+                    <input type="date" className="inputs" onChange={this.changeDOB} />
                     
                     <label>Department: </label>
                     <select className='inputs' id='doctorDepartment_Select' onChange={this.changeDepartment}>

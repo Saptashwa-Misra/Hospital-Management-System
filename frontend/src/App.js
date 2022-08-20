@@ -22,6 +22,8 @@ import { WrongURL } from './Components/wrongURL';
 import { DoctorUpdate } from './Components/doctor_update';
 import { DoctorRemove } from './Components/doctor_remove';
 import { PatientRemove } from './Components/patient_remove';
+import { AdminRequestApproval } from './Components/admin_requestApproval';
+import { BookAppointment } from './Components/Book_Appointment';
 
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
             <Route path="/home_page" element={<HomePage/>} />
             <Route path="/home_page/admin" element={<Admin/>} />
             <Route path="/home_page/admin/display_admin" element={<DisplayAdmin/>} />
+            <Route path="/home_page/admin/admin_request_approval" element={<AdminRequestApproval/>} />
             <Route path="/home_page/admin/mail_management" element={<AdminMail/>} />
             <Route path="/home_page/doctor" element={<Doctor/>} />
             <Route path="/home_page/doctor/register" element={<DoctorRegister/>} />
@@ -50,6 +53,7 @@ function App() {
             <Route path="/home_page/patients/search_patient" element={<SearchPatients/>} />
             <Route path="/home_page/patients/update_patientDetails" element={<PatientUpdate/>} />
             <Route path="/home_page/patients/remove_patient" element={<PatientRemove/>} />
+            <Route path="/home_page/patients/book_appointment" element={<BookAppointment/>} />
             <Route path="*" element={<WrongURL/>} />
           </Routes>
         </BrowserRouter>

@@ -103,7 +103,7 @@ class DisplayAdmin extends React.Component
     console.log('Render called')
     return <>
         <div>
-            <img src={header} alt="Header" />
+            <img className = 'Admin_Header' src={header} alt="Header" />
         </div>
         <div class='Body'>
             <h1>Display Admin!!</h1>

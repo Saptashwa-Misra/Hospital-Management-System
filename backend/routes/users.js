@@ -150,6 +150,23 @@ router.get('/patient/display', async function(req, res) {
     console.log(err);
   }
 });
+router.get('/patient/searchOne/:email', async function(req, res) {
+  try {
+    // console.log(req.params.email)
+    const result = await Patient_User.findOne({email:""+req.params.email})
+    // console.log(req)
+    // console.log(req.params.email)
+    // console.log(result)
+    if(result===null)
+      res.send("No patients are registered")
+    else
+      res.send(result)
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+});
 router.post('/patient/register', async function(req, res) {
   try {
     const {name, email, mobile, dob, gender} = req.body

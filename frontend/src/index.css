@@ -112,7 +112,7 @@ h1{
 }
 
 .Admin_Div:hover{
-  box-shadow: 7px 7px 14px 7px yellow;
+  box-shadow: 7px 7px 14px 7px red;
 }
 
 .Search{
@@ -155,4 +155,34 @@ h1{
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.Admin_Header{
+  height: 250px;
+  box-shadow: 7px 7px 14px 7px yellow;
+  border-radius: 20%;
+}
+
+.Admin_Header:hover{
+  box-shadow: 7px 7px 14px 7px darkblue;
+}
+
+.BookAppointment_Button{
+  font-size: 20px;
+  margin-top: 5%;
+  background-color: black;
+  color: white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.BookAppointment_Button:hover{
+  font-size: 20px;
+  margin-top: 5%;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }

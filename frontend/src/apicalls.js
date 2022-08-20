@@ -83,6 +83,13 @@ export const getPatients = async () => {
     return res.data
 }
 
+export const getPatientSearchOne = async (email) => {
+    console.log(email)
+    const res = await axios.get(`${url}users/patient/searchOne/${email}`)
+    console.log(res.data)
+    return res.data
+}
+
 export const Register_Patient = async (name, email, mobile, dob, gender) => {
     let req_json = {
         "name": name,
@@ -105,6 +112,35 @@ export const Update_Patient = async (name, email, mobile, dob, gender) => {
         "gender":gender,
     }
     const res =  await axios.put(`${url}users/patient/update`,req_json)
+    console.log(res.data.message)
+    return res.data.message
+}
+
+//Appointments
+export const getAppointments = async () => {
+    const res = await axios.get(`${url}users/doctor/display`)
+    console.log(res.data)
+    return res.data
+}
+
+export const Book_Appointment = async (picture_url, doctorName, doctorEmail, doctorMobile, doctorDepartment, doctorRegistration_no, patientName, patientEmail, patientMobile, patientDOB, patientGender, appointmentDate, appointmentTime) => {
+    let req_json = {
+        "DoctorUrl":picture_url,
+        "DoctorName":doctorName,
+        "DoctorEmail":doctorEmail,
+        "DoctorMobile":doctorMobile,
+        "DoctorDepartment":doctorDepartment,
+        "DoctorRegistration_no":doctorRegistration_no,
+        "Patientname":patientName,
+        "PatientEmail":patientEmail,
+        "PatientMobile":patientMobile,
+        "PatientDOB":patientDOB,
+        "PatientGender":patientGender,
+        "AppointmentDate":appointmentDate,
+        "AppointmentTime":appointmentTime
+    }
+    console.log(`${url}users/doctor/register`)
+    const res =  await axios.post(`${url}users/doctor/register`,req_json)
     console.log(res.data.message)
     return res.data.message
 }
