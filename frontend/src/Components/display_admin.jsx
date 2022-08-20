@@ -60,6 +60,8 @@ class DisplayAdmin extends React.Component
             </div>
         </>
     })
+    if(this.state.search.length===0)
+        return <h2>Sorry!! No relevant admin found!!</h2>
     console.log(admin_users)
     return admin_users
   }

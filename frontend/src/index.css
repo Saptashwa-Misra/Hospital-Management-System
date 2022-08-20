@@ -146,3 +146,13 @@ h1{
   flex-direction: row;
   justify-content: space-around;
 }
+
+.NoPageFound{
+  height: 250px;
+}
+
+.GotoHomePage_NoPageFound{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

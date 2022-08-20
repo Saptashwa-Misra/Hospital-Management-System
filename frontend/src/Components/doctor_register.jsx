@@ -70,6 +70,7 @@ class DoctorRegister extends React.Component
             else
                 {
                     console.log("Registered Successfully!!")
+                    alert("Registered Successfully!!")
                 }
         })
         

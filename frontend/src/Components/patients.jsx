@@ -26,13 +26,13 @@ class Patients extends React.Component
                 <img className='Image_Link' src={header} alt="Header" />
               </div>
             </Link>
-            <Link to='/home_page/doctor/search_doctor' className='link'>
+            <Link to='/home_page/patients/search_patient' className='link'>
               <div className='Div_Link'>
                 <div>Search Patients</div>
                 <img className='Image_Link' src={header} alt="Header" />
               </div>
             </Link>
-            <Link to='/register' className='link'>
+            <Link to='/home_page/patients/update_patientDetails' className='link'>
               <div className='Div_Link'>
                 <div>Update Patient Details</div>
                 <img className='Image_Link' src={header} alt="Header" />

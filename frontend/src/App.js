@@ -16,6 +16,9 @@ import { DoctorRegister } from './Components/doctor_register';
 import { SearchDoctor } from './Components/search_doctor';
 import { Patients } from './Components/patients';
 import { PatientRegister } from './Components/patient_register';
+import { SearchPatients } from './Components/patient_display';
+import { PatientUpdate } from './Components/patient_update';
+import { WrongURL } from './Components/wrongURL';
 
 
 function App() {
@@ -39,7 +42,9 @@ function App() {
             <Route path="/home_page/doctor/search_doctor" element={<SearchDoctor/>} />
             <Route path="/home_page/patients" element={<Patients/>} />
             <Route path="/home_page/patients/register" element={<PatientRegister/>} />
-            <Route path="*" element={<h1>No Page Found</h1>} />
+            <Route path="/home_page/patients/search_patient" element={<SearchPatients/>} />
+            <Route path="/home_page/patients/update_patientDetails" element={<PatientUpdate/>} />
+            <Route path="*" element={<WrongURL/>} />
           </Routes>
         </BrowserRouter>
       {Login}

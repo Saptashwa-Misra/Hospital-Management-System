@@ -4,9 +4,9 @@ import header from './images/Header.jpeg';
 import {
     Link
   } from "react-router-dom";
-import {Register_Patient} from '../apicalls';
+import {Update_Patient} from '../apicalls';
 
-class PatientRegister extends React.Component
+class PatientUpdate extends React.Component
 {
   constructor(props) 
   {
@@ -51,14 +51,14 @@ class PatientRegister extends React.Component
         console.log(this.state.url)
         console.log(this.state.registration_number+"\t"+this.state.department)
 
-        Register_Patient(this.state.name, this.state.email_username, this.state.phone_number, this.state.dob, this.state.gender).then((res)=>{
+        Update_Patient(this.state.name, this.state.email_username, this.state.phone_number, this.state.dob, this.state.gender).then((res)=>{
             console.log("Received response from DB: " + res)
-            if(res==='Patient with the entered mail id exits')
-                alert("Patient with the entered mail id exits")
+            if(res==='Patient not found - Please register')
+                alert("Patient not found - Please register")
             else
                 {
-                    console.log("Registered Successfully!!")
-                    alert("Registered Successfully!!")
+                    console.log("Patient record updated successfully!!")
+                    alert("Patient record updated successfully!!")
                 }
         })
   }
@@ -72,7 +72,7 @@ class PatientRegister extends React.Component
             <img src={header} alt="Header" />
         </div>
         <div class='Body'>
-            <h1>Register new Patient</h1>
+            <h1>Update Patient Details</h1>
             <div className='Login_Inputs'>
               <div className='grid-container'>
 
@@ -94,13 +94,13 @@ class PatientRegister extends React.Component
                         <div><input type="radio" name="gender" value="Female" onChange={this.changeGender}/>Female</div>
                     </div>
               </div>
-                <button type='submit' className='Submit_button' onClick={this.submitButton}>REGISTER</button>
+                <button type='submit' className='Submit_button' onClick={this.submitButton}>UPDATE</button>
         <div className='nav'>
-          <Link to='/home_page/patients/search_patient' className='link'>Already registered? Please search</Link>
+          <Link to='/' className='link'>Want to check details? Please search</Link>
         </div>
             </div>
         </div>
     </>
   }
 }
-export {PatientRegister}
+export {PatientUpdate}
