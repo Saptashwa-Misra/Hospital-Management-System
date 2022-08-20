@@ -38,7 +38,7 @@ class Patients extends React.Component
                 <img className='Image_Link' src={header} alt="Header" />
               </div>
             </Link>
-            <Link to='/register' className='link'>
+            <Link to='/home_page/patients/remove_patient' className='link'>
               <div className='Div_Link'>
                 <div>Remove Patient</div>
                 <img className='Image_Link' src={header} alt="Header" />

@@ -60,6 +60,21 @@ export const Register_Doctors = async (picture_url, name, email, mobile, dob, de
     console.log(res.data.message)
     return res.data.message
 }
+export const Update_Doctor = async (picture_url, name, email, mobile, dob, department, registration_no) => {
+    let req_json = {
+        "url":picture_url,
+        "name": name,
+        "email": email,
+        "mobile": mobile,
+        "dob":dob,
+        "department":department,
+        "registration_no":registration_no
+    }
+    console.log(`${url}users/doctor/update`)
+    const res =  await axios.put(`${url}users/doctor/update`,req_json)
+    console.log(res.data.message)
+    return res.data.message
+}
 
 //Patients
 export const getPatients = async () => {

@@ -19,6 +19,9 @@ import { PatientRegister } from './Components/patient_register';
 import { SearchPatients } from './Components/patient_display';
 import { PatientUpdate } from './Components/patient_update';
 import { WrongURL } from './Components/wrongURL';
+import { DoctorUpdate } from './Components/doctor_update';
+import { DoctorRemove } from './Components/doctor_remove';
+import { PatientRemove } from './Components/patient_remove';
 
 
 function App() {
@@ -40,10 +43,13 @@ function App() {
             <Route path="/home_page/doctor" element={<Doctor/>} />
             <Route path="/home_page/doctor/register" element={<DoctorRegister/>} />
             <Route path="/home_page/doctor/search_doctor" element={<SearchDoctor/>} />
+            <Route path="/home_page/doctor/update_doctorDetails" element={<DoctorUpdate/>} />
+            <Route path="/home_page/doctor/remove_doctor" element={<DoctorRemove/>} />
             <Route path="/home_page/patients" element={<Patients/>} />
             <Route path="/home_page/patients/register" element={<PatientRegister/>} />
             <Route path="/home_page/patients/search_patient" element={<SearchPatients/>} />
             <Route path="/home_page/patients/update_patientDetails" element={<PatientUpdate/>} />
+            <Route path="/home_page/patients/remove_patient" element={<PatientRemove/>} />
             <Route path="*" element={<WrongURL/>} />
           </Routes>
         </BrowserRouter>

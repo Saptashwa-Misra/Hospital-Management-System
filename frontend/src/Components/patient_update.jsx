@@ -96,7 +96,7 @@ class PatientUpdate extends React.Component
               </div>
                 <button type='submit' className='Submit_button' onClick={this.submitButton}>UPDATE</button>
         <div className='nav'>
-          <Link to='/' className='link'>Want to check details? Please search</Link>
+          <Link to='/home_page/patients/search_patient' className='link'>Want to check details? Please search</Link>
         </div>
             </div>
         </div>

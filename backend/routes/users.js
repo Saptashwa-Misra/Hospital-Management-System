@@ -113,6 +113,28 @@ router.post('/doctor/register', async function(req, res) {
     console.log(err);
   }
 });
+router.put('/doctor/update', async function(req, res) {
+  try {
+    const result = await Doctor_User.findOne({email:req.body.email}) //Email is present in DB
+    if(result)
+    {
+      const record = await Doctor_User.updateOne({email:req.body.email}, {$set:req.body})
+      res.json({
+        response: record,
+        message:"Doctor record updated successfully!!"
+      })
+    }
+    else{
+      res.json({
+        message:'Doctor not found - Please register'
+      })
+    }
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+});
 
 /* PATIENT BACKEND */
 router.get('/patient/display', async function(req, res) {
@@ -161,7 +183,7 @@ router.put('/patient/update', async function(req, res) {
       const record = await Patient_User.updateOne({email:req.body.email}, {$set:req.body})
       res.json({
         response: record,
-        message:"Patient record updated!!"
+        message:"Patient record updated successfully!!"
       })
     }
     else{
