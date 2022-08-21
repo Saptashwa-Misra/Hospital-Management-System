@@ -5,6 +5,8 @@ import {
   } from "react-router-dom";
 import {getDoctors} from '../apicalls'
 import {getPatientSearchOne} from '../apicalls'
+import {getDoctorSearchOne} from '../apicalls'
+import {Book_Appointment} from '../apicalls'
 
 class BookAppointment extends React.Component
 {
@@ -38,14 +40,23 @@ class BookAppointment extends React.Component
 
   bookAppointment = async (event) => {
     console.log(event.target.id)
+    console.log(this.state.appointmentDate)
     try{
         // let res_doctor = await getDoctors()
         //TODO: New Backend to be created for searching a single doctor
         //console.log(res_doctor +"\n"+this.state.email_username)
+        let res_doctor = await getDoctorSearchOne(event.target.id)
+        console.log(res_doctor)
         let res_patient = await getPatientSearchOne(this.state.email_username)
         console.log(res_patient)
         if(res_patient==="No patients are registered")
             alert ("Patient with the entered mail id is not registered.\nPlease register before booking an appointment.")
+        else
+        {
+            let res_bookAppointment = await Book_Appointment (res_doctor.url, res_doctor.name, res_doctor.email, res_doctor.mobile, res_doctor.department, res_doctor.registration_no, res_patient.name, res_patient.email, res_patient.mobile, res_patient.dob, res_patient.gender, this.state.appointmentDate, this.state.appointmentTime)
+            alert (res_bookAppointment)
+        }
+        //After receiving doctor JSON and patient JSON create the new backend for appointment and call it in apicalls
     }
     catch (Error)
     {
@@ -118,7 +129,7 @@ class BookAppointment extends React.Component
                 <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
 
                 <label>Date of Appointment: </label>
-                <input type="date" className="inputs" onChange={this.changeDOB} />
+                <input type="date" className="inputs" onChange={this.changeAppointmentDate} />
 
                 <label>Time of Appointment: </label>
                 <input type="time" className="inputs" id="" onChange={this.changeAppointmentTime}/>

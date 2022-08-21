@@ -186,3 +186,36 @@ h1{
   padding-top: 5%;
   padding-bottom: 5%;
 }
+
+.DoctorProfilePhoto_Appointment{
+  height: 150px;
+  width: 150px;
+}
+
+.Appointment_Div{
+  display: flex;
+}
+
+.DoctorAppointment_Div{
+  background-color: aqua;
+  font-size: 20px;
+  padding: 2%;
+}
+
+.PatientAppointment_Div{
+  background-color: lightpink;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-left: 40px solid white;
+  font-size: 20px;
+  padding: 2%;
+}
+
+#AppointmentMain_Div{
+  box-shadow: 7px 7px 14px 7px lightpink;
+}
+
+#AppointmentMain_Div:hover{
+  box-shadow: 7px 7px 14px 7px aqua;
+}

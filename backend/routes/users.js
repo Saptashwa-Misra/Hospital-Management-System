@@ -3,7 +3,8 @@ var router = express.Router();
 var User=require('../routes/schema')
 var Doctor_User=require('../routes/doctor_schema')
 var Patient_User=require('../routes/patient_schema')
-var {hashPwd,hashCompare}=require('../routes/bcrypt')
+var book_Appointment=require('../routes/appointment_schema')
+var {hashPwd,hashCompare}=require('../routes/bcrypt');
 
 /* ADMIN BACKEND */
 router.get('/display', async function(req, res) {
@@ -86,6 +87,23 @@ router.get('/doctor/display', async function(req, res) {
   catch (err)
   {
     console.log(err);
+  }
+});
+router.get('/doctor/searchOne/:email', async function(req, res) {
+  try {
+    const result = await Doctor_User.findOne({email:""+req.params.email})
+    // console.log(req)
+    // console.log(req.params.email)
+    // console.log(result)
+    if(result===null)
+      res.send("No doctors are registered")
+    else
+      res.send(result)
+  }
+  catch (err)
+  {
+    console.log(err);
+    res.send(err);
   }
 });
 router.post('/doctor/register', async function(req, res) {
@@ -215,3 +233,40 @@ router.put('/patient/update', async function(req, res) {
   }
 });
 module.exports = router;
+
+/* APPOINTMENT BACKEND */
+
+router.get('/getAppointmentDetails', async function (req, res) {
+  try{
+    let result = await book_Appointment.find()
+    if(result.length===0)
+      res.send("No appointments are booked!! Enjoy your free time!!")
+    else
+      res.send(result)
+  }
+  catch (err)
+  {
+    console.log(err)
+  }
+})
+router.post('/bookAppointment', async function(req, res) {
+  try {
+    const result = await book_Appointment.findOne({PatientEmail:req.body.PatientEmail}) //Patient Email is already there
+    if(result)
+    {
+      res.json({
+        message:"Patient with the entered mail already has an active appointment booked"
+      })
+    }
+    else{
+      const record = await new book_Appointment(req.body).save() //Create new Appointment
+      res.json({
+        message:'Appointment booked successfully!! Wish you a speedy recovery!!'
+      })
+    }
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+});

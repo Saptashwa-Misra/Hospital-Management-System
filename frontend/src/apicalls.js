@@ -45,6 +45,13 @@ export const getDoctors = async () => {
     return res.data
 }
 
+export const getDoctorSearchOne = async (email) => {
+    console.log(email)
+    const res = await axios.get(`${url}users/doctor/searchOne/${email}`)
+    console.log(res.data)
+    return res.data
+}
+
 export const Register_Doctors = async (picture_url, name, email, mobile, dob, department, registration_no) => {
     let req_json = {
         "url":picture_url,
@@ -118,7 +125,7 @@ export const Update_Patient = async (name, email, mobile, dob, gender) => {
 
 //Appointments
 export const getAppointments = async () => {
-    const res = await axios.get(`${url}users/doctor/display`)
+    const res = await axios.get(`${url}users/getAppointmentDetails`)
     console.log(res.data)
     return res.data
 }
@@ -139,8 +146,8 @@ export const Book_Appointment = async (picture_url, doctorName, doctorEmail, doc
         "AppointmentDate":appointmentDate,
         "AppointmentTime":appointmentTime
     }
-    console.log(`${url}users/doctor/register`)
-    const res =  await axios.post(`${url}users/doctor/register`,req_json)
+    console.log(`${url}/bookAppointment`)
+    const res =  await axios.post(`${url}users/bookAppointment`,req_json)
     console.log(res.data.message)
     return res.data.message
 }

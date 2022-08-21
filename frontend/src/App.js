@@ -24,6 +24,7 @@ import { DoctorRemove } from './Components/doctor_remove';
 import { PatientRemove } from './Components/patient_remove';
 import { AdminRequestApproval } from './Components/admin_requestApproval';
 import { BookAppointment } from './Components/Book_Appointment';
+import { Appointments } from './Components/Appointments';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <Route path="/home_page/doctor" element={<Doctor/>} />
             <Route path="/home_page/doctor/register" element={<DoctorRegister/>} />
             <Route path="/home_page/doctor/search_doctor" element={<SearchDoctor/>} />
+            <Route path="/home_page/doctor/appointments" element={<Appointments/>} />
             <Route path="/home_page/doctor/update_doctorDetails" element={<DoctorUpdate/>} />
             <Route path="/home_page/doctor/remove_doctor" element={<DoctorRemove/>} />
             <Route path="/home_page/patients" element={<Patients/>} />

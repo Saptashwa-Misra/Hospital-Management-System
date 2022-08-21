@@ -37,7 +37,7 @@ class Doctor extends React.Component
                 <img className='Image_Link' src={search_pic} alt="Header" />
               </div>
             </Link>
-            <Link to='/register' className='link'>
+            <Link to='/home_page/doctor/appointments' className='link'>
               <div className='Div_Link'>
                 <div>Appointments</div>
                 <img className='Image_Link' src={displayDoctorAppointment_pic} alt="Header" />
