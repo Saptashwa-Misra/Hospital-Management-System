@@ -122,6 +122,13 @@ export const Update_Patient = async (name, email, mobile, dob, gender) => {
     console.log(res.data.message)
     return res.data.message
 }
+export const Remove_Patients = async (name, email) => {
+    console.log(email)
+    console.log(`${url}users/patient/delete/${email}`)
+    const res =  await axios.delete(`${url}users/patient/delete/${email}`)
+    console.log(res.data.message)
+    return res.data.message
+}
 
 //Appointments
 export const getAppointments = async () => {

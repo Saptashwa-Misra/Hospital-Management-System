@@ -71,8 +71,9 @@ class PatientRegister extends React.Component
         <div>
             <img src={header} alt="Header" />
         </div>
-        <div class='Body'>
+        <div className ='Body'>
             <h1>Register new Patient</h1>
+            <form>
             <div className='Login_Inputs'>
               <div className='grid-container'>
 
@@ -83,7 +84,7 @@ class PatientRegister extends React.Component
                     <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
                 
                     <label>Patients's Email: </label>
-                    <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
+                    <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail}/>
 
                     <label>Date of Birth: </label>
                     <input type="date" className="inputs" onChange={this.changeDOB} />
@@ -98,7 +99,7 @@ class PatientRegister extends React.Component
         <div className='nav'>
           <Link to='/home_page/patients/search_patient' className='link'>Already registered? Please search</Link>
         </div>
-            </div>
+            </div></form>
         </div>
     </>
   }

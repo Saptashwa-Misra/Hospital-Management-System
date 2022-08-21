@@ -232,7 +232,31 @@ router.put('/patient/update', async function(req, res) {
     console.log(err);
   }
 });
-module.exports = router;
+router.delete('/patient/delete/:mail', async function(req, res) {
+  try {
+    const result = await Patient_User.findOne({email:req.params.mail}) //Email is already there
+    if(result)
+    {
+      const del_result = await Patient_User.deleteOne({email:req.params.mail})
+      res.json({
+        message:"Patient record deleted successfully!!"
+      })
+    }
+    else{
+      // let pwd = await hashPwd(req.body.password)
+      // req.body.password = pwd //Hash password will be stored.
+      //const record = await new User({name,email,mobile,password}).save() //Create new Account
+      //const record = await new Patient_User(req.body).save() //Create new Account
+      res.json({
+        message:'Patient record not found'
+      })
+    }
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+});
 
 /* APPOINTMENT BACKEND */
 
@@ -270,3 +294,5 @@ router.post('/bookAppointment', async function(req, res) {
     console.log(err);
   }
 });
+
+module.exports = router;

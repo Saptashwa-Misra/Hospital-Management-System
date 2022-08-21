@@ -5,6 +5,7 @@ import {
     Link
   } from "react-router-dom";
 import {Update_Patient} from '../apicalls';
+import {getPatientSearchOne} from '../apicalls';
 
 class PatientUpdate extends React.Component
 {
@@ -45,6 +46,22 @@ class PatientUpdate extends React.Component
     this.setState({gender: event.target.value})
   }
 
+  AutofillButton = async (event) => {
+    try{
+      let res_patient = await getPatientSearchOne(this.state.email_username)
+      console.log(res_patient)
+      if(res_patient==="No patients are registered")
+          alert ("The entered mail id does not exist!!\nPlease enter the correct mail id or register")
+      else
+          this.setState ({name:res_patient.name, phone_number:res_patient.mobile, dob:res_patient.dob, gender:res_patient.gender})
+  }
+  catch (Error)
+  {
+      console.log(Error)
+      alert(Error)
+  }
+}
+
   submitButton = () => {
         console.log(this.state.name+"\t"+this.state.phone_number)
         console.log(this.state.email_username+"\t"+this.state.dob)
@@ -77,16 +94,19 @@ class PatientUpdate extends React.Component
               <div className='grid-container'>
 
                     <label>Patient's Name: </label>
-                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} />
+                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} value={this.state.name} />
                 
                     <label>Patient's Phone number: </label>
-                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
+                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} value={this.state.phone_number} />
                 
                     <label>Patients's Email: </label>
-                    <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
+                    <div>
+                      <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
+                      <button type='submit' className='Autofill_Button' onClick={this.AutofillButton}>AUTOFILL USING EMAIL</button>
+                    </div>
 
                     <label>Date of Birth: </label>
-                    <input type="date" className="inputs" placeholder="Enter email id" onChange={this.changeDOB} />
+                    <input type="date" className="inputs" onChange={this.changeDOB} value={this.state.dob}/>
 
                     <label>Patient's Gender: </label>
                     <div className='RadioButtons'>

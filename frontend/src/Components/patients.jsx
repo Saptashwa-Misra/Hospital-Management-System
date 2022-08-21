@@ -6,6 +6,8 @@ import search_pic from './images/search.jpg';
 import update_pic from './images/Update.jpg';
 import delete_pic from './images/delete.jpg';
 import doctorAppointment_pic from './images/doctor_appointment.jpg';
+import cancel_pic from './images/cancelled.jpg';
+
 import {
     Link
   } from "react-router-dom";
@@ -58,7 +60,7 @@ class Patients extends React.Component
             <Link to='/home_page/patients/book_appointment' className='link'>
               <div className='Div_Link'>
                 <div>Cancel Appointment</div>
-                <img className='Image_Link' src={doctorAppointment_pic} alt="Header" />
+                <img className='Image_Link' src={cancel_pic} alt="Header" />
               </div>
             </Link>
         </div>

@@ -5,6 +5,7 @@ import {
     Link
   } from "react-router-dom";
 import {Update_Doctor} from '../apicalls';
+import {getDoctorSearchOne} from '../apicalls'
 
 class DoctorUpdate extends React.Component
 {
@@ -57,6 +58,21 @@ class DoctorUpdate extends React.Component
     this.setState({registration_number: event.target.value})
   }
 
+  AutofillButton = async (event) => {
+    try{
+      let res_doctor = await getDoctorSearchOne(this.state.email_username)
+      console.log(res_doctor)
+      if(res_doctor==="No doctors are registered")
+          alert ("The entered mail id does not exist!!\nPlease enter the correct mail id or register")
+      else
+          this.setState ({url:res_doctor.url, name:res_doctor.name, phone_number:res_doctor.mobile, dob:res_doctor.dob, department:res_doctor.department, registration_number:res_doctor.registration_no})
+  }
+  catch (Error)
+  {
+      console.log(Error)
+      alert(Error)
+  }
+}
   submitButton = () => {
         console.log(this.state.name+"\t"+this.state.phone_number)
         console.log(this.state.email_username+"\t"+this.state.dob)
@@ -91,22 +107,25 @@ class DoctorUpdate extends React.Component
               <div className='grid-container'>
 
                     <label>Doctor's Image URL: </label>
-                    <input type="text" className="inputs" placeholder="Enter doctor's picture URL (should be public)" onChange={this.changeURL}/>
+                    <input type="text" className="inputs" placeholder="Enter doctor's picture URL (should be public)" onChange={this.changeURL} value={this.state.url}/>
 
                     <label>Doctor's Name: </label>
-                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} />
+                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} value={this.state.name}/>
                 
                     <label>Doctor's Phone number: </label>
-                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
+                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} value={this.state.phone_number}/>
                 
                     <label>Doctor's Email: </label>
-                    <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
+                    <div>
+                      <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail}/>
+                      <button type='submit' className='Autofill_Button' onClick={this.AutofillButton}>AUTOFILL USING EMAIL</button>
+                    </div>
 
                     <label>Date of Birth: </label>
-                    <input type="date" className="inputs" placeholder="Enter email id" onChange={this.changeDOB} />
+                    <input type="date" className="inputs" placeholder="Enter email id" onChange={this.changeDOB} value={this.state.dob}/>
                     
                     <label>Department: </label>
-                    <select className='inputs' id='doctorDepartment_Select' onChange={this.changeDepartment}>
+                    <select className='inputs' id='doctorDepartment_Select' onChange={this.changeDepartment} value={this.state.department}>
                         <option value = "" selected disabled hidden>Choose Doctor's Department</option>
                         <option value = "Cardiologists">Cardiologists</option>
                         <option value = "Dermatolgists">Dermatolgists</option>
@@ -120,10 +139,10 @@ class DoctorUpdate extends React.Component
                     </select>
 
                     <label>Doctor's Registration number: </label>
-                    <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} />
+                    <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} value={this.state.registration_number}/>
                 
               </div>
-                <button type='submit' className='Submit_button' onClick={this.submitButton}>UPDATE</button>
+                <button type='submit' className='Submit_button' id='update_button' onClick={this.submitButton}>UPDATE</button>
         <div className='nav'>
           <Link to='/home_page/doctor/search_doctor' className='link'>Want to check details? Please search</Link>
         </div>
