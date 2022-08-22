@@ -57,7 +57,7 @@ class Patients extends React.Component
                 <img className='Image_Link' src={doctorAppointment_pic} alt="Header" />
               </div>
             </Link>
-            <Link to='/home_page/patients/book_appointment' className='link'>
+            <Link to='/home_page/patients/appointment_cancel' className='link'>
               <div className='Div_Link'>
                 <div>Cancel Appointment</div>
                 <img className='Image_Link' src={cancel_pic} alt="Header" />

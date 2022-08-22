@@ -82,6 +82,13 @@ export const Update_Doctor = async (picture_url, name, email, mobile, dob, depar
     console.log(res.data.message)
     return res.data.message
 }
+export const Remove_Doctors = async (email) => {
+    console.log(email)
+    console.log(`${url}users/doctor/delete/${email}`)
+    const res =  await axios.delete(`${url}users/doctor/delete/${email}`)
+    console.log(res.data.message)
+    return res.data.message
+}
 
 //Patients
 export const getPatients = async () => {
@@ -122,7 +129,7 @@ export const Update_Patient = async (name, email, mobile, dob, gender) => {
     console.log(res.data.message)
     return res.data.message
 }
-export const Remove_Patients = async (name, email) => {
+export const Remove_Patients = async (email) => {
     console.log(email)
     console.log(`${url}users/patient/delete/${email}`)
     const res =  await axios.delete(`${url}users/patient/delete/${email}`)
@@ -155,6 +162,13 @@ export const Book_Appointment = async (picture_url, doctorName, doctorEmail, doc
     }
     console.log(`${url}/bookAppointment`)
     const res =  await axios.post(`${url}users/bookAppointment`,req_json)
+    console.log(res.data.message)
+    return res.data.message
+}
+export const CancelAppointment = async (_id) => {
+    console.log(_id)
+    console.log(`${url}users/appointment/cancel/${_id}`)
+    const res =  await axios.delete(`${url}users/appointment/cancel/${_id}`)
     console.log(res.data.message)
     return res.data.message
 }

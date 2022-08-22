@@ -4,8 +4,9 @@ import {
     Link
   } from "react-router-dom";
 import {getAppointments} from '../apicalls'
+import {CancelAppointment} from '../apicalls'
 
-class Appointments extends React.Component
+class AppointmentCancel extends React.Component
 {
 
     constructor(props) 
@@ -13,8 +14,22 @@ class Appointments extends React.Component
       super(props)
       this.state={
           response: [],
-          search: []
+          search: [],
+          cancel: 0
       }
+    }
+
+    cancel_Appointment = async (event) => {
+        try{
+            let res= await CancelAppointment(event.target.id)
+            alert(res)
+            this.setState({cancel:this.state.cancel+1})
+        }
+        catch (err)
+        {
+            console.log(err)
+            alert(err)
+        }
     }
 
   
@@ -64,6 +79,7 @@ class Appointments extends React.Component
                         <div>Gender: {appointment.PatientGender}</div>
                     </div>
                 </div>
+                <button type='submit' className='CancelAppointment_Button' id={appointment._id} onClick={this.cancel_Appointment}>CANCEL APPOINTMENT</button>
             </div>
         </>
     })
@@ -91,7 +107,7 @@ class Appointments extends React.Component
     console.log('Render called')
     return <>
         <div class='Body'>
-            <h1>Appointments!!</h1>
+            <h1>Cancel Appointments!</h1>
             <div className='Search_bar'>
                 <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
                 <input type="text" className="Search" id="Search" placeholder="Search by appointment id, name, mail id, doctor's department or phone number......." onChange={this.search_doctor}/>
@@ -102,4 +118,4 @@ class Appointments extends React.Component
     </>
   }
 }
-export {Appointments}
+export {AppointmentCancel}

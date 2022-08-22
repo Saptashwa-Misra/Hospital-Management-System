@@ -153,6 +153,27 @@ router.put('/doctor/update', async function(req, res) {
     console.log(err);
   }
 });
+router.delete('/doctor/delete/:mail', async function(req, res) {
+  try {
+    const result = await Doctor_User.findOne({email:req.params.mail}) //Email is already there
+    if(result)
+    {
+      const del_result = await Doctor_User.deleteOne({email:req.params.mail})
+      res.json({
+        message:"Doctor record deleted successfully!!"
+      })
+    }
+    else{
+      res.json({
+        message:'Doctor record not found'
+      })
+    }
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+});
 
 /* PATIENT BACKEND */
 router.get('/patient/display', async function(req, res) {
@@ -286,6 +307,27 @@ router.post('/bookAppointment', async function(req, res) {
       const record = await new book_Appointment(req.body).save() //Create new Appointment
       res.json({
         message:'Appointment booked successfully!! Wish you a speedy recovery!!'
+      })
+    }
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+});
+router.delete('/appointment/cancel/:_id', async function(req, res) {
+  try {
+    const result = await book_Appointment.findOne({_id:req.params._id}) //Email is already there
+    if(result)
+    {
+      const del_result = await book_Appointment.deleteOne({_id:req.params._id})
+      res.json({
+        message:"Appointment cancelled successfully!!"
+      })
+    }
+    else{
+      res.json({
+        message:'Appointment record not found!!'
       })
     }
   }

@@ -4,7 +4,7 @@ import header from './images/Header.jpeg';
 import {
     Link
   } from "react-router-dom";
-import {Register_Doctors} from '../apicalls';
+import {Remove_Doctors} from '../apicalls';
 
 class DoctorRemove extends React.Component
 {
@@ -13,7 +13,6 @@ class DoctorRemove extends React.Component
     super(props)
     this.state={
         email_username: '',
-        registration_number: ''
     }
   }
 
@@ -23,29 +22,14 @@ class DoctorRemove extends React.Component
     this.setState({email_username: event.target.value})
   }
 
-
-  changeRegistrationNumber = (event) =>{
-    console.log(event.target.value)
-    this.setState({registration_number: event.target.value})
-  }
-
   submitButton = () => {
-        console.log(this.state.email_username)
-        console.log(this.state.registration_number)
+    console.log(this.state.email_username)
 
-        // Register_Doctors(this.state.url, this.state.name, this.state.email_username, this.state.phone_number, this.state.dob, this.state.department, this.state.registration_number).then((res)=>{
-        //     console.log("Received response from DB: " + res)
-        //     if(res==='Doctor with the entered mail id exits')
-        //         alert("Doctor with the entered mail id exits")
-        //     else
-        //         {
-        //             console.log("Registered Successfully!!")
-        //             alert("Registered Successfully!!")
-        //         }
-        // })
-        
-    //}
-  }
+    Remove_Doctors(this.state.name, this.state.email_username).then((res)=>{
+        console.log("Received response from DB: " + res)
+        alert(res)
+    })
+}
 
   render()
   {
@@ -62,10 +46,7 @@ class DoctorRemove extends React.Component
     
                     <label>Doctor's Email: </label>
                     <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
-
-                    <label>Doctor's Registration number: </label>
-                    <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} />
-                
+               
               </div>
                 <button type='submit' className='Submit_button' onClick={this.submitButton}>REMOVE</button>
         <div className='nav'>
