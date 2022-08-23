@@ -74,6 +74,7 @@ class Register extends React.Component
                     console.log("Registered Successfully!!")
                     alert("Registered Successfully!!")
                 }
+            window.open('/',"_self");
         })
         
     }
