@@ -5,6 +5,7 @@ import {
     Link
   } from "react-router-dom";
 import {Register_Doctors} from '../apicalls';
+import { isLoggedIn } from './loggedInOrNot';
 
 class DoctorRegister extends React.Component
 {
@@ -80,56 +81,66 @@ class DoctorRegister extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
-        <div>
-            <img src={header} alt="Header" />
-        </div>
-        <div class='Body'>
-            <h1>Register new Doctor</h1>
-            <div className='Login_Inputs'>
-              <div className='grid-container'>
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+      return <>
+          <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
+          <div>
+              <img src={header} alt="Header" />
+          </div>
+          <div class='Body'>
+              <h1>Register new Doctor</h1>
+              <div className='Login_Inputs'>
+                <div className='grid-container'>
 
-                    <label>Doctor's Image URL: </label>
-                    <input type="text" className="inputs" placeholder="Enter doctor's picture URL (should be public)" onChange={this.changeURL}/>
+                      <label>Doctor's Image URL: </label>
+                      <input type="text" className="inputs" placeholder="Enter doctor's picture URL (should be public)" onChange={this.changeURL}/>
 
-                    <label>Doctor's Name: </label>
-                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} />
-                
-                    <label>Doctor's Phone number: </label>
-                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
-                
-                    <label>Doctor's Email: </label>
-                    <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
+                      <label>Doctor's Name: </label>
+                      <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} />
+                  
+                      <label>Doctor's Phone number: </label>
+                      <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
+                  
+                      <label>Doctor's Email: </label>
+                      <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
 
-                    <label>Date of Birth: </label>
-                    <input type="date" className="inputs" onChange={this.changeDOB} />
-                    
-                    <label>Department: </label>
-                    <select className='inputs' id='doctorDepartment_Select' onChange={this.changeDepartment}>
-                        <option value = "" selected disabled hidden>Choose Doctor's Department</option>
-                        <option value = "Cardiologists">Cardiologists</option>
-                        <option value = "Dermatolgists">Dermatolgists</option>
-                        <option value = "Endocrinologists">Endocrinologists</option>
-                        <option value = "Family Physicians">Family Physicians</option>
-                        <option value = "Gastroenterologists">Gastroenterologists</option>
-                        <option value = "Hematologists">Hematologists</option>
-                        <option value = "Nephrologists">Nephrologists</option>
-                        <option value = "Pediatricians">Pediatricians</option>
-                        <option value = "Emergency">Emergency</option>
-                    </select>
+                      <label>Date of Birth: </label>
+                      <input type="date" className="inputs" onChange={this.changeDOB} />
+                      
+                      <label>Department: </label>
+                      <select className='inputs' id='doctorDepartment_Select' onChange={this.changeDepartment}>
+                          <option value = "" selected disabled hidden>Choose Doctor's Department</option>
+                          <option value = "Cardiologists">Cardiologists</option>
+                          <option value = "Dermatolgists">Dermatolgists</option>
+                          <option value = "Endocrinologists">Endocrinologists</option>
+                          <option value = "Family Physicians">Family Physicians</option>
+                          <option value = "Gastroenterologists">Gastroenterologists</option>
+                          <option value = "Hematologists">Hematologists</option>
+                          <option value = "Nephrologists">Nephrologists</option>
+                          <option value = "Pediatricians">Pediatricians</option>
+                          <option value = "Emergency">Emergency</option>
+                      </select>
 
-                    <label>Doctor's Registration number: </label>
-                    <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} />
-                
+                      <label>Doctor's Registration number: </label>
+                      <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} />
+                  
+                </div>
+                  <button type='submit' className='Submit_button' onClick={this.submitButton}>REGISTER</button>
+          <div className='nav'>
+            <Link to='/home_page/doctor/search_doctor' className='link'>Already registered? Please search</Link>
+          </div>
               </div>
-                <button type='submit' className='Submit_button' onClick={this.submitButton}>REGISTER</button>
-        <div className='nav'>
-          <Link to='/home_page/doctor/search_doctor' className='link'>Already registered? Please search</Link>
-        </div>
-            </div>
-        </div>
-    </>
+          </div>
+      </>
+    else
+       return <>
+         <h1>Unauthorised Access!! Please Login</h1>
+         <div className='GotoLoginPage_UnauthorisedAccess'>
+             <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+             <h4>Login Page</h4>
+         </div>
+       </>
   }
 }
 export {DoctorRegister}

@@ -5,6 +5,7 @@ import {
     Link
   } from "react-router-dom";
 import {Remove_Doctors} from '../apicalls';
+import { isLoggedIn } from './loggedInOrNot';
 
 class DoctorRemove extends React.Component
 {
@@ -34,27 +35,37 @@ class DoctorRemove extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
-        <div>
-            <img src={header} alt="Header" />
-        </div>
-        <div class='Body'>
-            <h1>Remove Doctor</h1>
-            <div className='Login_Inputs'>
-              <div className='grid-container'>
-    
-                    <label>Doctor's Email: </label>
-                    <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
-               
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+      return <>
+          <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
+          <div>
+              <img src={header} alt="Header" />
+          </div>
+          <div class='Body'>
+              <h1>Remove Doctor</h1>
+              <div className='Login_Inputs'>
+                <div className='grid-container'>
+      
+                      <label>Doctor's Email: </label>
+                      <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
+                
+                </div>
+                  <button type='submit' className='Submit_button' onClick={this.submitButton}>REMOVE</button>
+          <div className='nav'>
+            <Link to='/home_page/doctor/search_doctor' className='link'>Unable to remove? Please search</Link>
+          </div>
               </div>
-                <button type='submit' className='Submit_button' onClick={this.submitButton}>REMOVE</button>
-        <div className='nav'>
-          <Link to='/home_page/doctor/search_doctor' className='link'>Unable to remove? Please search</Link>
-        </div>
-            </div>
-        </div>
-    </>
+          </div>
+      </>
+    else
+       return <>
+         <h1>Unauthorised Access!! Please Login</h1>
+         <div className='GotoLoginPage_UnauthorisedAccess'>
+             <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+             <h4>Login Page</h4>
+         </div>
+       </>
   }
 }
 export {DoctorRemove}

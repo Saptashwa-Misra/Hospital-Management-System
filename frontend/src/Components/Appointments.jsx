@@ -4,6 +4,7 @@ import {
     Link
   } from "react-router-dom";
 import {getAppointments} from '../apicalls'
+import { isLoggedIn } from './loggedInOrNot';
 
 class Appointments extends React.Component
 {
@@ -89,17 +90,27 @@ class Appointments extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <div class='Body'>
-            <h1>Appointments!!</h1>
-            <div className='Search_bar'>
-                <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
-                <input type="text" className="Search" id="Search" placeholder="Search by appointment id, name, mail id, doctor's department or phone number......." onChange={this.search_doctor}/>
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+        return <>
+            <div class='Body'>
+                <h1>Appointments!!</h1>
+                <div className='Search_bar'>
+                    <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
+                    <input type="text" className="Search" id="Search" placeholder="Search by appointment id, name, mail id, doctor's department or phone number......." onChange={this.search_doctor}/>
+                </div>
+                <div className='DisplayRecords'>{this.Display_Records()}</div>
+                
             </div>
-            <div className='DisplayRecords'>{this.Display_Records()}</div>
-            
-        </div>
-    </>
+        </>
+    else
+         return <>
+           <h1>Unauthorised Access!! Please Login</h1>
+           <div className='GotoLoginPage_UnauthorisedAccess'>
+               <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+               <h4>Login Page</h4>
+           </div>
+         </>
   }
 }
 export {Appointments}

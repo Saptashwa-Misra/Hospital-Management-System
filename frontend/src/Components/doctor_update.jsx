@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 import {Update_Doctor} from '../apicalls';
 import {getDoctorSearchOne} from '../apicalls'
+import { isLoggedIn } from './loggedInOrNot';
 
 class DoctorUpdate extends React.Component
 {
@@ -96,59 +97,69 @@ class DoctorUpdate extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
-        <div>
-            <img src={header} alt="Header" />
-        </div>
-        <div class='Body'>
-            <h1>Update Doctor Details</h1>
-            <div className='Login_Inputs'>
-              <div className='grid-container'>
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+      return <>
+          <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>
+          <div>
+              <img src={header} alt="Header" />
+          </div>
+          <div class='Body'>
+              <h1>Update Doctor Details</h1>
+              <div className='Login_Inputs'>
+                <div className='grid-container'>
 
-                    <label>Doctor's Image URL: </label>
-                    <input type="text" className="inputs" placeholder="Enter doctor's picture URL (should be public)" onChange={this.changeURL} value={this.state.url}/>
+                      <label>Doctor's Image URL: </label>
+                      <input type="text" className="inputs" placeholder="Enter doctor's picture URL (should be public)" onChange={this.changeURL} value={this.state.url}/>
 
-                    <label>Doctor's Name: </label>
-                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} value={this.state.name}/>
-                
-                    <label>Doctor's Phone number: </label>
-                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} value={this.state.phone_number}/>
-                
-                    <label>Doctor's Email: </label>
-                    <div>
-                      <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail}/>
-                      <button type='submit' className='Autofill_Button' onClick={this.AutofillButton}>AUTOFILL USING EMAIL</button>
-                    </div>
+                      <label>Doctor's Name: </label>
+                      <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} value={this.state.name}/>
+                  
+                      <label>Doctor's Phone number: </label>
+                      <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} value={this.state.phone_number}/>
+                  
+                      <label>Doctor's Email: </label>
+                      <div>
+                        <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail}/>
+                        <button type='submit' className='Autofill_Button' onClick={this.AutofillButton}>AUTOFILL USING EMAIL</button>
+                      </div>
 
-                    <label>Date of Birth: </label>
-                    <input type="date" className="inputs" placeholder="Enter email id" onChange={this.changeDOB} value={this.state.dob}/>
-                    
-                    <label>Department: </label>
-                    <select className='inputs' id='doctorDepartment_Select' onChange={this.changeDepartment} value={this.state.department}>
-                        <option value = "" selected disabled hidden>Choose Doctor's Department</option>
-                        <option value = "Cardiologists">Cardiologists</option>
-                        <option value = "Dermatolgists">Dermatolgists</option>
-                        <option value = "Endocrinologists">Endocrinologists</option>
-                        <option value = "Family Physicians">Family Physicians</option>
-                        <option value = "Gastroenterologists">Gastroenterologists</option>
-                        <option value = "Hematologists">Hematologists</option>
-                        <option value = "Nephrologists">Nephrologists</option>
-                        <option value = "Pediatricians">Pediatricians</option>
-                        <option value = "Emergency">Emergency</option>
-                    </select>
+                      <label>Date of Birth: </label>
+                      <input type="date" className="inputs" placeholder="Enter email id" onChange={this.changeDOB} value={this.state.dob}/>
+                      
+                      <label>Department: </label>
+                      <select className='inputs' id='doctorDepartment_Select' onChange={this.changeDepartment} value={this.state.department}>
+                          <option value = "" selected disabled hidden>Choose Doctor's Department</option>
+                          <option value = "Cardiologists">Cardiologists</option>
+                          <option value = "Dermatolgists">Dermatolgists</option>
+                          <option value = "Endocrinologists">Endocrinologists</option>
+                          <option value = "Family Physicians">Family Physicians</option>
+                          <option value = "Gastroenterologists">Gastroenterologists</option>
+                          <option value = "Hematologists">Hematologists</option>
+                          <option value = "Nephrologists">Nephrologists</option>
+                          <option value = "Pediatricians">Pediatricians</option>
+                          <option value = "Emergency">Emergency</option>
+                      </select>
 
-                    <label>Doctor's Registration number: </label>
-                    <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} value={this.state.registration_number}/>
-                
+                      <label>Doctor's Registration number: </label>
+                      <input type="text" className="inputs" placeholder="Enter registration number" onChange={this.changeRegistrationNumber} value={this.state.registration_number}/>
+                  
+                </div>
+                  <button type='submit' className='Submit_button' id='update_button' onClick={this.submitButton}>UPDATE</button>
+          <div className='nav'>
+            <Link to='/home_page/doctor/search_doctor' className='link'>Want to check details? Please search</Link>
+          </div>
               </div>
-                <button type='submit' className='Submit_button' id='update_button' onClick={this.submitButton}>UPDATE</button>
-        <div className='nav'>
-          <Link to='/home_page/doctor/search_doctor' className='link'>Want to check details? Please search</Link>
-        </div>
-            </div>
-        </div>
-    </>
+          </div>
+      </>
+    else
+       return <>
+         <h1>Unauthorised Access!! Please Login</h1>
+         <div className='GotoLoginPage_UnauthorisedAccess'>
+             <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+             <h4>Login Page</h4>
+         </div>
+       </>
   }
 }
 export {DoctorUpdate}

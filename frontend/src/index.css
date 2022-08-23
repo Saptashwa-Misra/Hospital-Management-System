@@ -121,7 +121,7 @@ h1{
   width: 95%
 }
 
-.LinktoHome{
+.LinktoHome, .LinktoLogin{
   width:5%;
   text-decoration: none;
   font-size: 50px;
@@ -152,7 +152,7 @@ h1{
   height: 250px;
 }
 
-.GotoHomePage_NoPageFound{
+.GotoHomePage_NoPageFound, .GotoLoginPage_UnauthorisedAccess{
   display: flex;
   flex-direction: row;
   justify-content: center;

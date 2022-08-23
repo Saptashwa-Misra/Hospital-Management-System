@@ -5,6 +5,7 @@ import {
     Link
   } from "react-router-dom";
 import {Update_Patient} from '../apicalls';
+import { isLoggedIn } from './loggedInOrNot';
 import {getPatientSearchOne} from '../apicalls';
 
 class PatientUpdate extends React.Component
@@ -83,44 +84,54 @@ class PatientUpdate extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <Link to = "/home_page/patients" className='LinktoHome'>&#x2190;</Link>
-        <div>
-            <img src={header} alt="Header" />
-        </div>
-        <div class='Body'>
-            <h1>Update Patient Details</h1>
-            <div className='Login_Inputs'>
-              <div className='grid-container'>
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+      return <>
+          <Link to = "/home_page/patients" className='LinktoHome'>&#x2190;</Link>
+          <div>
+              <img src={header} alt="Header" />
+          </div>
+          <div class='Body'>
+              <h1>Update Patient Details</h1>
+              <div className='Login_Inputs'>
+                <div className='grid-container'>
 
-                    <label>Patient's Name: </label>
-                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} value={this.state.name} />
-                
-                    <label>Patient's Phone number: </label>
-                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} value={this.state.phone_number} />
-                
-                    <label>Patients's Email: </label>
-                    <div>
-                      <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
-                      <button type='submit' className='Autofill_Button' onClick={this.AutofillButton}>AUTOFILL USING EMAIL</button>
-                    </div>
+                      <label>Patient's Name: </label>
+                      <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} value={this.state.name} />
+                  
+                      <label>Patient's Phone number: </label>
+                      <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} value={this.state.phone_number} />
+                  
+                      <label>Patients's Email: </label>
+                      <div>
+                        <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail} />
+                        <button type='submit' className='Autofill_Button' onClick={this.AutofillButton}>AUTOFILL USING EMAIL</button>
+                      </div>
 
-                    <label>Date of Birth: </label>
-                    <input type="date" className="inputs" onChange={this.changeDOB} value={this.state.dob}/>
+                      <label>Date of Birth: </label>
+                      <input type="date" className="inputs" onChange={this.changeDOB} value={this.state.dob}/>
 
-                    <label>Patient's Gender: </label>
-                    <div className='RadioButtons'>
-                        <div><input type="radio" name="gender" value="Male" onChange={this.changeGender}/>Male</div>
-                        <div><input type="radio" name="gender" value="Female" onChange={this.changeGender}/>Female</div>
-                    </div>
+                      <label>Patient's Gender: </label>
+                      <div className='RadioButtons'>
+                          <div><input type="radio" name="gender" value="Male" onChange={this.changeGender}/>Male</div>
+                          <div><input type="radio" name="gender" value="Female" onChange={this.changeGender}/>Female</div>
+                      </div>
+                </div>
+                  <button type='submit' className='Submit_button' onClick={this.submitButton}>UPDATE</button>
+          <div className='nav'>
+            <Link to='/home_page/patients/search_patient' className='link'>Want to check details? Please search</Link>
+          </div>
               </div>
-                <button type='submit' className='Submit_button' onClick={this.submitButton}>UPDATE</button>
-        <div className='nav'>
-          <Link to='/home_page/patients/search_patient' className='link'>Want to check details? Please search</Link>
-        </div>
-            </div>
-        </div>
-    </>
+          </div>
+      </>
+    else
+       return <>
+         <h1>Unauthorised Access!! Please Login</h1>
+         <div className='GotoLoginPage_UnauthorisedAccess'>
+             <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+             <h4>Login Page</h4>
+         </div>
+       </>
   }
 }
 export {PatientUpdate}

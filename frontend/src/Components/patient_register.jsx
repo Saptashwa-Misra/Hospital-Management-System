@@ -1,6 +1,7 @@
 import React from 'react';
 import '../index.css';
 import header from './images/Header.jpeg';
+import { isLoggedIn } from './loggedInOrNot';
 import {
     Link
   } from "react-router-dom";
@@ -66,42 +67,52 @@ class PatientRegister extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <Link to = "/home_page/patients" className='LinktoHome'>&#x2190;</Link>
-        <div>
-            <img src={header} alt="Header" />
-        </div>
-        <div className ='Body'>
-            <h1>Register new Patient</h1>
-            <form>
-            <div className='Login_Inputs'>
-              <div className='grid-container'>
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+      return <>
+          <Link to = "/home_page/patients" className='LinktoHome'>&#x2190;</Link>
+          <div>
+              <img src={header} alt="Header" />
+          </div>
+          <div className ='Body'>
+              <h1>Register new Patient</h1>
+              <form>
+              <div className='Login_Inputs'>
+                <div className='grid-container'>
 
-                    <label>Patient's Name: </label>
-                    <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} />
-                
-                    <label>Patient's Phone number: </label>
-                    <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
-                
-                    <label>Patients's Email: </label>
-                    <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail}/>
+                      <label>Patient's Name: </label>
+                      <input type="text" className="inputs" placeholder="Enter name" onChange={this.changeName} />
+                  
+                      <label>Patient's Phone number: </label>
+                      <input type="text" className="inputs" placeholder='Enter phone number' onChange={this.changePhoneNumber} />
+                  
+                      <label>Patients's Email: </label>
+                      <input type="text" className="inputs" placeholder="Enter email id" onChange={this.changeEmail}/>
 
-                    <label>Date of Birth: </label>
-                    <input type="date" className="inputs" onChange={this.changeDOB} />
+                      <label>Date of Birth: </label>
+                      <input type="date" className="inputs" onChange={this.changeDOB} />
 
-                    <label>Patient's Gender: </label>
-                    <div className='RadioButtons'>
-                        <div><input type="radio" name="gender" value="Male" onChange={this.changeGender}/>Male</div>
-                        <div><input type="radio" name="gender" value="Female" onChange={this.changeGender}/>Female</div>
-                    </div>
-              </div>
-                <button type='submit' className='Submit_button' onClick={this.submitButton}>REGISTER</button>
-        <div className='nav'>
-          <Link to='/home_page/patients/search_patient' className='link'>Already registered? Please search</Link>
-        </div>
-            </div></form>
-        </div>
-    </>
+                      <label>Patient's Gender: </label>
+                      <div className='RadioButtons'>
+                          <div><input type="radio" name="gender" value="Male" onChange={this.changeGender}/>Male</div>
+                          <div><input type="radio" name="gender" value="Female" onChange={this.changeGender}/>Female</div>
+                      </div>
+                </div>
+                  <button type='submit' className='Submit_button' onClick={this.submitButton}>REGISTER</button>
+          <div className='nav'>
+            <Link to='/home_page/patients/search_patient' className='link'>Already registered? Please search</Link>
+          </div>
+              </div></form>
+          </div>
+      </>
+    else
+       return <>
+         <h1>Unauthorised Access!! Please Login</h1>
+         <div className='GotoLoginPage_UnauthorisedAccess'>
+             <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+             <h4>Login Page</h4>
+         </div>
+       </>
   }
 }
 export {PatientRegister}

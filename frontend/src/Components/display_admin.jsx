@@ -5,6 +5,7 @@ import {
     Link
   } from "react-router-dom";
 import {getUsers} from '../apicalls'
+import { isLoggedIn } from './loggedInOrNot';
 
 class DisplayAdmin extends React.Component
 {
@@ -101,20 +102,30 @@ class DisplayAdmin extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <div>
-            <img className = 'Admin_Header' src={header} alt="Header" />
-        </div>
-        <div class='Body'>
-            <h1>Display Admin!!</h1>
-            <div className='Search_bar'>
-                <Link to = "/home_page/admin" className='LinktoHome'>&#x2190;</Link>
-                <input type="text" className="Search" id="Search" placeholder="Search by name, mail id or phone number......." onChange={this.search_admin}/>
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+        return <>
+            <div>
+                <img className = 'Admin_Header' src={header} alt="Header" />
             </div>
-            <div className='DisplayRecords'>{this.Display_Records()}</div>
-            
-        </div>
-    </>
+            <div class='Body'>
+                <h1>Display Admin!!</h1>
+                <div className='Search_bar'>
+                    <Link to = "/home_page/admin" className='LinktoHome'>&#x2190;</Link>
+                    <input type="text" className="Search" id="Search" placeholder="Search by name, mail id or phone number......." onChange={this.search_admin}/>
+                </div>
+                <div className='DisplayRecords'>{this.Display_Records()}</div>
+                
+            </div>
+        </>
+    else
+     return <>
+       <h1>Unauthorised Access!! Please Login</h1>
+       <div className='GotoLoginPage_UnauthorisedAccess'>
+           <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+           <h4>Login Page</h4>
+       </div>
+     </>
   }
 }
 export {DisplayAdmin}

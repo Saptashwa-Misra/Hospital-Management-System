@@ -4,7 +4,8 @@ import header from './images/Header.jpeg';
 import {
     Link
   } from "react-router-dom";
-import {Login_User} from '../apicalls'
+import { Login_User } from '../apicalls';
+import { LoggedIn } from './loggedInOrNot';
 
 class Login extends React.Component
 {
@@ -40,8 +41,11 @@ class Login extends React.Component
             console.log("Received response from DB: " + res)
             if(res==='Login Success')
                 {
-                    window.open('/home_page');
+                    LoggedIn(this.state.email_username)
+                    //window.open('/home_page',"_self","");
+                    window.open('/home_page')
                     console.log('Login Successful')
+                    //window.close();
                 }
             else
                 {

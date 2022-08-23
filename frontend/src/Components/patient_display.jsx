@@ -1,5 +1,6 @@
 import React from 'react';
 import '../index.css';
+import { isLoggedIn } from './loggedInOrNot';
 import {
     Link
   } from "react-router-dom";
@@ -70,17 +71,27 @@ class SearchPatients extends React.Component
   render()
   {
     console.log('Render called')
-    return <>
-        <div class='Body'>
-            <h1>Search Patients!!</h1>
-            <div className='Search_bar'>
-                <Link to = "/home_page/patients" className='LinktoHome'>&#x2190;</Link>
-                <input type="text" className="Search" id="Search" placeholder="Search by name, mail id or phone number......." onChange={this.search_patient}/>
+    console.log(isLoggedIn())
+    if(isLoggedIn()===true)
+        return <>
+            <div class='Body'>
+                <h1>Search Patients!!</h1>
+                <div className='Search_bar'>
+                    <Link to = "/home_page/patients" className='LinktoHome'>&#x2190;</Link>
+                    <input type="text" className="Search" id="Search" placeholder="Search by name, mail id or phone number......." onChange={this.search_patient}/>
+                </div>
+                <div className='DisplayRecords'>{this.Display_Records()}</div>
+                
             </div>
-            <div className='DisplayRecords'>{this.Display_Records()}</div>
-            
-        </div>
-    </>
+        </>
+    else
+         return <>
+           <h1>Unauthorised Access!! Please Login</h1>
+           <div className='GotoLoginPage_UnauthorisedAccess'>
+               <Link to = "/" className='LinktoLogin'>&#x2190;</Link>
+               <h4>Login Page</h4>
+           </div>
+         </>
   }
 }
 export {SearchPatients}
