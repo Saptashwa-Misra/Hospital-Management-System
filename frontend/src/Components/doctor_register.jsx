@@ -88,7 +88,7 @@ class DoctorRegister extends React.Component
           <div>
               <img src={header} alt="Header" />
           </div>
-          <div class='Body'>
+          <div className='Body'>
               <h1>Register new Doctor</h1>
               <div className='Login_Inputs'>
                 <div className='grid-container'>

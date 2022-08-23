@@ -93,7 +93,7 @@ class Appointments extends React.Component
     console.log(isLoggedIn())
     if(isLoggedIn()===true)
         return <>
-            <div class='Body'>
+            <div className='Body'>
                 <h1>Appointments!!</h1>
                 <div className='Search_bar'>
                     <Link to = "/home_page/doctor" className='LinktoHome'>&#x2190;</Link>

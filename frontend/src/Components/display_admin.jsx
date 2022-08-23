@@ -108,7 +108,7 @@ class DisplayAdmin extends React.Component
             <div>
                 <img className = 'Admin_Header' src={header} alt="Header" />
             </div>
-            <div class='Body'>
+            <div className='Body'>
                 <h1>Display Admin!!</h1>
                 <div className='Search_bar'>
                     <Link to = "/home_page/admin" className='LinktoHome'>&#x2190;</Link>

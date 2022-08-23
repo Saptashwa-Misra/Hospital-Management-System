@@ -5,6 +5,7 @@ import patients from './images/patients.jpg';
 import doctors from './images/doctors.jpg';
 import admin from './images/admin.jpg';
 import { isLoggedIn } from './loggedInOrNot';
+import { getAdminName } from '../apicalls'
 
 import {
     Link
@@ -12,15 +13,35 @@ import {
 
 class HomePage extends React.Component
 {
+  constructor(props) 
+  {
+    super(props)
+    this.state={
+        name: ''
+    }
+  }
+
+  GetAdminName_Function = async () => {
+    try{
+      if(this.state.name==='')
+        this.setState({name: await getAdminName()})
+    } catch (err) {
+      this.setState({name: await getAdminName()})
+    }
+  }
 
   render()
   {
     console.log('Render called')
     console.log(isLoggedIn())
     if(isLoggedIn()===true)
+    {
+      //getAdminName()
+      this.GetAdminName_Function()
+      console.log("AdminName: " +sessionStorage.getItem('AdminName'))
       return <>
           <div>
-            <h1>Welcome to our Hospital</h1>
+            <div className='Welcome_HomePage'>WELCOME {sessionStorage.getItem('AdminName')} TO OUR HOSPITAL</div>
           </div>
           <div>
               <img src={header} alt="Header" />
@@ -46,6 +67,7 @@ class HomePage extends React.Component
               </Link>
           </div>
       </>
+    }
     else
       return <>
         <h1>Unauthorised Access!! Please Login</h1>

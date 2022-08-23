@@ -17,6 +17,19 @@ router.get('/display', async function(req, res) {
     console.log(err);
   }
 });
+router.get('/admin/searchOne/:email', async function(req, res) {
+  try {
+    const result = await User.findOne({email:""+req.params.email})
+    if(result===null)
+      res.send("No admins are registered")
+    else
+      res.send(result)
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+});
 router.post('/register', async function(req, res) {
   try {
     const {name, email, mobile, password} = req.body

@@ -124,7 +124,7 @@ class BookAppointment extends React.Component
     console.log(isLoggedIn())
     if(isLoggedIn()===true)
         return <>
-            <div class='Body'>
+            <div className='Body'>
                 <h1>Book Appointments!!</h1>
                 
                 <div className='grid-container'>

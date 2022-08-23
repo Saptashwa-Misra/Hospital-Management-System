@@ -109,7 +109,7 @@ class AppointmentCancel extends React.Component
     console.log(isLoggedIn())
     if(isLoggedIn()===true)
         return <>
-            <div class='Body'>
+            <div className='Body'>
                 <h1>Cancel Appointments!</h1>
                 <div className='Search_bar'>
                     <Link to = "/home_page/patients" className='LinktoHome'>&#x2190;</Link>

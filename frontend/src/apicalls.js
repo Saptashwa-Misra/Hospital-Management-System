@@ -10,6 +10,15 @@ export const getUsers = async () => {
     return res.data
 }
 
+export const getAdminName = async () => {
+    let email = sessionStorage.getItem('Email')
+    console.log(email)
+    const res = await axios.get(`${url}users/admin/searchOne/${email}`)
+    console.log(res.data.name)
+    sessionStorage.setItem('AdminName',res.data.name.toUpperCase())
+    return res.data.name.toUpperCase()
+}
+
 export const Register_User = async (name, email, mobile, password) => {
     let req_json = {
         "name": name,

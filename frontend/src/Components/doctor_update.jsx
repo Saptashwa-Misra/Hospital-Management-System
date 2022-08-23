@@ -104,7 +104,7 @@ class DoctorUpdate extends React.Component
           <div>
               <img src={header} alt="Header" />
           </div>
-          <div class='Body'>
+          <div className='Body'>
               <h1>Update Doctor Details</h1>
               <div className='Login_Inputs'>
                 <div className='grid-container'>
