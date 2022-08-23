@@ -5,7 +5,11 @@ import {
     Link,
     // useNavigate
   } from "react-router-dom";
-import {Register_User} from '../apicalls';
+import { Register_User } from '../apicalls';
+import { Validate_Name } from './validate'
+import { Validate_Email } from './validate'
+import { Validate_Phone } from './validate'
+import { Validate_Password } from './validate'
 
 class Register extends React.Component
 {
@@ -53,31 +57,47 @@ class Register extends React.Component
   }
 
   submitButton = () => {
-    //document.getElementById("submitted_or_not").innerText="SUBMITTED SUCCESSFULLY!!"
-    if(this.state.access_id!=='SAPTASHWA@ACCESS')
-        alert('Invalid Authentication ID\nPLEASE CONTACT THE HOSPITAL MANAGEMENT')
-    else if (this.state.password !== this.state.confirm_password)
-        alert('PASSWORD ENTERED IS NOT MATCHING WITH CONFIRM PASSWORD')
-    else
-    {
-        console.log(this.state.name+"\t"+this.state.phone_number)
-        console.log(this.state.email_username+"\t"+this.state.password)
-        console.log(this.state.confirm_password+"\t"+this.state.access_id)
-        // const navigate = useNavigate();
-        // navigate('/login');
-        Register_User(this.state.name, this.state.email_username, this.state.phone_number, this.state.password).then((res)=>{
-            console.log("Received response from DB: " + res)
-            if(res==='Account exits')
-                alert("Account already exists with this mail is")
-            else
-                {
-                    console.log("Registered Successfully!!")
-                    alert("Registered Successfully!!")
-                }
-            window.open('/',"_self");
-        })
-        
-    }
+    try {
+          let message_name = Validate_Name(this.state.name)
+          let message_mail = Validate_Email(this.state.email_username)
+          let message_phone = Validate_Phone(this.state.phone_number)
+          let message_password = Validate_Password(this.state.password)
+          if(this.state.access_id!=='SAPTASHWA@ACCESS')
+              alert('Invalid Authentication ID\nPLEASE CONTACT THE HOSPITAL MANAGEMENT')
+          else if(message_name!=="Correct Name")
+              alert(message_name)
+          else if(message_mail!=="Correct Mail ID")
+              alert(message_mail)
+          else if(message_phone!=="Correct Phone number")
+              alert(message_phone)
+          else if(message_password!=="Correct Password")
+              alert(message_password)
+          else if (this.state.password !== this.state.confirm_password)
+              alert('PASSWORD ENTERED IS NOT MATCHING WITH CONFIRM PASSWORD')
+          else
+          {
+              console.log(this.state.name+"\t"+this.state.phone_number)
+              console.log(this.state.email_username+"\t"+this.state.password)
+              console.log(this.state.confirm_password+"\t"+this.state.access_id)
+              // const navigate = useNavigate();
+              // navigate('/login');
+              Register_User(this.state.name, this.state.email_username, this.state.phone_number, this.state.password).then((res)=>{
+                  console.log("Received response from DB: " + res)
+                  if(res==='Account exits')
+                      alert("Account already exists with this mail is")
+                  else
+                      {
+                          console.log("Registered Successfully!!")
+                          alert("Registered Successfully!!")
+                      }
+                  window.open('/',"_self");
+              })
+              
+          }
+      } catch (err)
+      {
+        alert(err)
+      }
   }
 
   render()
