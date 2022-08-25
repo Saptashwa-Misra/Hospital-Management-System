@@ -40,7 +40,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/master--hospital-management-system-saptashwa.netlify.app/home_page" element={<HomePage/>} />
+            <Route path="/home_page" element={<HomePage/>} />
             <Route path="/home_page/admin" element={<Admin/>} />
             <Route path="/home_page/admin/display_admin" element={<DisplayAdmin/>} />
             <Route path="/home_page/admin/admin_request_approval" element={<AdminRequestApproval/>} />
