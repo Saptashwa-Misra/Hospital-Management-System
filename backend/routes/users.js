@@ -351,3 +351,4 @@ router.delete('/appointment/cancel/:_id', async function(req, res) {
 });
 
 module.exports = router;
+console.log("Backend of Hospital Management System - Saptashwa Misra")
