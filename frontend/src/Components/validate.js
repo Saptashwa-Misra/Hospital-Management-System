@@ -33,7 +33,7 @@ export const Validate_Password = (password) =>{
     let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]*$/
     if(password[0].value==="")
         return("Kindly enter the Password")
-    else if(pattern.test(password)==false)
+    else if(pattern.test(password)===false)
         return("Password should have atleast 1 upper case, 1 lower case, 1 number and 1 special character !@#$%^&*()")
     else
     return("Correct Password")
