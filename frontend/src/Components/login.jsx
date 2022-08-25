@@ -43,7 +43,7 @@ class Login extends React.Component
                 {
                     LoggedIn(this.state.email_username)
                     //window.open('/home_page',"_self","");
-                    window.open('https://hospital-management-system-saptashwa.netlify.app/home_page')
+                    window.open('/hospital-management-system-saptashwa.netlify.app/home_page')
                     console.log('Login Successful')
                     //window.close();
                 }
