@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = 'http://localhost:8000/'
+//const url = 'http://localhost:8000/'
+const url = 'https://hms-backend-saptashwa-misra.herokuapp.com/' 
 
 //Admin
 export const getUsers = async () => {
