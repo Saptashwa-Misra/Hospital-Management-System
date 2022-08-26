@@ -3,7 +3,7 @@
 
 Being a developer, I always wanted to improve the future of the upcoming generation. A hospital management system promotes communication between providers and patients and improves patient experiences. Moreover, in an Hospital there should be no loss/misplacement of data. Manual databases are prone to damage and serching data will take lots of time and manpower. This hospital management system will help the hospital management to store, organize data and help in the smooth functionality of the same.
 
-
+Deployed link:- https://master--hospital-management-system-saptashwa.netlify.app/
 
 
 
