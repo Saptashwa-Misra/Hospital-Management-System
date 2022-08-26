@@ -22,7 +22,8 @@ Deployed link:- https://master--hospital-management-system-saptashwa.netlify.app
 ![image](https://user-images.githubusercontent.com/108685307/186957462-bc97023e-0ff7-4826-8004-018d8e2fa041.png)
 - Admins will also be able to search their colleagues and will be able to contact them in case of any need
 - If someone wants to access any page other than login or registration by using the url then he/she will be prevented from accessing it and a link to login page will be displayed.
-![image](https://user-images.githubusercontent.com/108685307/186956740-15f51592-b374-4ff2-88f0-57164bb540fe.png)
+![image](https://user-images.githubusercontent.com/108685307/186958196-1ab4f394-de85-4a7d-bd0e-aa4c6ac14218.png)
+
 Although the URL is correct but since the user has not logged in to the system he/she is denied the access.
 
 Remember to close the tab to logout from the website :)
