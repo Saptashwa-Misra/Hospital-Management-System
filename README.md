@@ -28,6 +28,8 @@ Being a developer, I always wanted to improve the future of the upcoming generat
 
 
 ## Screenshots
+![image](https://user-images.githubusercontent.com/108685307/186907784-f4458227-1fff-438b-9b42-e9c45667ae5e.png)
+![image](https://user-images.githubusercontent.com/108685307/186908109-4ba2c1a3-bd46-4eef-9641-26057b754038.png)
 
 
 
